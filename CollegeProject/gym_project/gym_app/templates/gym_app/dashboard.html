@@ -1,0 +1,167 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}{% block content %}<div class="content" style="text-align: center; max-width: 1400px; margin: 20px auto;"> <!-- Increased max-width -->
+    <h2 class="titan-text">Member Dashboard</h2>
+    <div class="table-container">
+        <table class="members-table">
+            <thead>
+                <tr>
+                    <th data-sort="name">Name <i class="fas fa-sort"></i></th>
+                    <th data-sort="phone">Phone <i class="fas fa-sort"></i></th>
+                    <th data-sort="plan">Membership Plan <i class="fas fa-sort"></i></th>
+                    <th data-sort="expiry">Expiry <i class="fas fa-sort"></i></th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                <tr class="member-row" data-id="{{ member.id }}" {% if member.is_expiring %}style="background: rgba(255, 0, 0, 0.2);"{% endif %}>
+                    <td>{{ member.user.username }}</td>
+                    <td>{{ member.phone }}</td>
+                    <td>{{ member.membership_plan.name|default:"None" }}</td>
+                    <td>{{ member.membership_expiry }}</td>
+                    <td>
+                        <a href="{% url 'member_detail' member.id %}" class="action-btn view-btn">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .table-container {
+        overflow-x: auto;
+        margin: 20px 0;
+        animation: slideUp 1s ease-out;
+    }
+
+    .members-table {
+        width: 100%;
+        min-width: 1200px; /* Increased width for a wider table */
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    .members-table th {
+        background: rgba(0, 0, 64, 0.9);
+        color: #fff;
+        padding: 20px 30px; /* Wider horizontal padding */
+        text-align: left;
+        cursor: pointer;
+        font-size: 1.3em;
+        transition: background 0.3s ease;
+    }
+
+    .members-table th:hover {
+        background: #ff6600;
+    }
+
+    .members-table td {
+        padding: 18px 30px; /* Wider horizontal padding */
+        border-bottom: 2px solid #00ccff;
+        color: #000;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+    }
+
+    .members-table tr {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    .members-table tr:hover {
+        background: rgba(255, 102, 0, 0.2);
+        transform: scale(1.02);
+    }
+
+    .member-row {
+        cursor: pointer;
+    }
+
+    .member-row:active {
+        background: rgba(0, 204, 255, 0.3);
+    }
+
+    .action-btn {
+        padding: 12px 25px; /* Wider button */
+        margin: 0 10px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-size: 1.1em;
+        color: #fff;
+    }
+
+    .view-btn {
+        background: #32cd32;
+    }
+
+    .view-btn:hover {
+        background: #3cb371;
+        transform: translateY(-3px);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const table = document.querySelector('.members-table');
+        const headers = table.querySelectorAll('th[data-sort]');
+        let sortDirection = 1;
+        let sortedColumn = null;
+
+        // Sort table
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const key = header.dataset.sort;
+                if (sortedColumn !== key) {
+                    sortDirection = 1;
+                } else {
+                    sortDirection *= -1;
+                }
+                sortedColumn = key;
+
+                const tbody = table.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+
+                rows.sort((a, b) => {
+                    const aValue = a.cells[Array.from(headers).indexOf(header)].textContent;
+                    const bValue = b.cells[Array.from(headers).indexOf(header)].textContent;
+                    return aValue.localeCompare(bValue) * sortDirection;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // Row click to view details (redirects to existing view link)
+        const rows = table.querySelectorAll('.member-row');
+        rows.forEach(row => {
+            row.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('action-btn')) {
+                    const userId = row.dataset.id;
+                    window.location.href = `{% url 'member_detail' 0 %}`.replace('0', userId);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+

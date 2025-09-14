@@ -1,0 +1,213 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content events-section-main">
+    <h3 class="events-heading events-main-heading">Titan Fitness Events</h3>
+    <p class="events-paragraph-main">
+        Join the Titan Fitness community for exciting events that ignite your passion for fitness! From heart-pumping challenges to fun, family-friendly activities, our events are designed to inspire, connect, and transform. Explore our upcoming events and become part of the Titan family today! 🌟
+    </p>
+</div>
+
+<!-- Upcoming Events Section -->
+<div class="events-section-grid-container" data-observer>
+    <div class="events-grid events-grid-layout">
+        <div class="event-card events-grid-card">
+            <img src="{% static 'images/events/Marathon.jpg' %}" alt="Titan Marathon" class="events-image">
+            <h4 class="events-title">Annual Titan Marathon</h4>
+            <p class="events-date">October 25, 2025 | 8:00 AM</p>
+            <p class="events-description">
+                Run, jog, or walk in our annual 5K Titan Marathon to support local charities! Open to all fitness levels, this community event is perfect for connecting with fellow fitness enthusiasts. Prizes for top finishers and a post-race celebration included! 🏃‍♂️
+            </p>
+        </div>
+        <div class="event-card events-grid-card">
+            <img src="{% static 'images/events/glow.jpg' %}" alt="Glow-in-the-Dark HIIT" class="events-image">
+            <h4 class="events-title">Glow-in-the-Dark HIIT Night</h4>
+            <p class="events-date">November 15, 2025 | 7:00 PM</p>
+            <p class="events-description">
+                Light up your workout with our neon-themed HIIT class! Wear glow-in-the-dark gear and join us for a high-energy session with a live DJ. Share your experience with #TitanGlowNight for a chance to win free merchandise! 💥
+            </p>
+        </div>
+        <div class="event-card events-grid-card">
+            <img src="{% static 'images/events/family.jpg' %}" alt="Family Fitness Day" class="events-image">
+            <h4 class="events-title">Family Fitness Day</h4>
+            <p class="events-date">December 6, 2025 | 10:00 AM</p>
+            <p class="events-description">
+                Bring the whole family for a fun-filled day of fitness! Enjoy kid-friendly obstacle courses, parent-child yoga, and healthy snack demos. Perfect for all ages to experience the Titan Fitness vibe. 🤝
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Recurring Events Section -->
+<div class="events-section-main">
+    <div class="events-grid events-grid-layout">
+        <div class="event-card events-grid-card">
+            <img src="{% static 'images/events/Bootcamp.jpg' %}" alt="Weekly Bootcamp" class="events-image">
+            <h4 class="events-title">Weekly Bootcamp</h4>
+            <p class="events-date">Every Saturday | 9:00 AM</p>
+            <p class="events-description">
+                Kickstart your weekend with our high-intensity bootcamp! Led by our expert trainers, this group workout is perfect for all levels. Track your progress with #TitanBootcamp. 💪
+            </p>
+        </div>
+        <div class="event-card events-grid-card">
+            <img src="{% static 'images/events/squats.jpg' %}" alt="Monthly Squat Challenge" class="events-image">
+            <h4 class="events-title">30-Day Squat Challenge</h4>
+            <p class="events-date">Starts First of Every Month</p>
+            <p class="events-description">
+                Join our monthly squat challenge to build strength and consistency! Track your progress, share updates with #Titan30DayChallenge, and win prizes for top participants. Beginners welcome! 🏋️‍♂️
+            </p>
+        </div>
+        <div class="event-card events-grid-card">
+            <img src="{% static 'images/events/Trivia.jpg' %}" alt="Fitness Trivia Night" class="events-image">
+            <h4 class="events-title">Fitness Trivia Night</h4>
+            <p class="events-date">Last Friday of Every Month | 6:00 PM</p>
+            <p class="events-description">
+                Test your fitness knowledge and have a laugh with our monthly trivia night! Team up with friends, enjoy healthy snacks, and compete for fun prizes. A great way to connect with the Titan community. 🎉
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 1. Section Container Styles */
+    .events-section-main {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 204, 255, 0.3);
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    .events-section-grid-container {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 102, 0, 0.3);
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    /* 2. Heading Styles */
+    .events-heading {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+        background: linear-gradient(to right, #00cc00, #66ff66);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow:
+            2px 2px 4px rgba(0, 204, 0, 0.6),
+            -2px -2px 4px rgba(102, 255, 102, 0.4),
+            0 0 12px rgba(0, 204, 255, 0.7),
+            0 0 20px rgba(255, 102, 0, 0.5);
+        font-family: 'Gothic A1', sans-serif;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    /* 3. Paragraph and Text Styles */
+    .events-paragraph-main {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4em;
+        line-height: 1.8;
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 204, 255, 0.4);
+    }
+
+    .events-description {
+        font-family: 'Cinzel', serif;
+        font-size: 1.1em;
+        line-height: 1.7;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 0 0 6px rgba(255, 102, 0, 0.3);
+    }
+
+    .events-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.8em;
+        background: linear-gradient(to right, #00ccff, #66ffcc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow:
+            2px 2px 4px rgba(0, 204, 255, 0.6),
+            -2px -2px 4px rgba(102, 255, 204, 0.4),
+            0 0 10px rgba(255, 102, 0, 0.5);
+        margin: 10px 0;
+    }
+
+    .events-date {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.2em;
+        color: #ff6600;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 0 0 6px rgba(0, 204, 255, 0.3);
+        margin-bottom: 10px;
+    }
+
+    /* 4. Grid Layout */
+    .events-grid-layout {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .events-grid-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 204, 255, 0.2);
+    }
+
+    .events-grid-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.6),
+            0 0 15px rgba(0, 204, 255, 0.4),
+            0 0 20px rgba(255, 102, 0, 0.3);
+    }
+
+    /* 5. Image Styles */
+    .events-image {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 8px rgba(255, 102, 0, 0.2);
+    }
+
+    .events-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 204, 255, 0.3);
+    }
+
+    /* 6. Responsive Adjustments */
+    @media (max-width: 768px) {
+        .events-section-main, .events-section-grid-container {
+            padding: 20px;
+            margin: 10px auto;
+        }
+
+        .events-heading {
+            font-size: 1.8em !important;
+        }
+
+        .events-paragraph-main, .events-description, .events-date {
+            font-size: 1.1em !important;
+        }
+
+        .events-grid-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .events-image {
+            max-width: 100%;
+        }
+    }
+</style>
+{% endblock %}

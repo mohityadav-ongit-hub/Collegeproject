@@ -1,0 +1,359 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content about-section-main">
+    <h3 class="about-heading about-mission-heading">Our Mission</h3>
+    <p class="about-paragraph-main">
+        At Titan Fitness Gym, we empower every individual to unlock their inner strength, conquer their goals, and build a healthier, stronger life. Our mission is to provide world-class facilities, expert guidance, and a supportive community to fuel your fitness journey. 💪
+    </p>
+    <h3 class="about-heading about-vision-heading">Our Vision</h3>
+    <p class="about-paragraph-main">
+        To be the ultimate fitness hub where passion meets performance, transforming lives through dedication, discipline, and unstoppable spirit.
+    </p>
+</div>
+
+<div class="scroll-section about-section-split" data-observer>
+    <div class="text-column about-text-column">
+        <h3 class="about-heading about-story-heading">Our Story</h3>
+        <p class="about-paragraph-split">
+            Founded in 2020 by a passionate group of fitness enthusiasts, Titan Fitness Gym began as a humble yet vibrant dream: to create a welcoming space where every individual could truly transform their body and mind. We started in a compact, intimate studio, fostering a close-knit community and a personal approach to fitness. Our early days were marked by unwavering dedication and a shared belief in the power of consistent effort. Through continuous innovation and listening to our members' evolving needs, we gradually outgrew our initial home. Today, we proudly stand as a sprawling, state-of-the-art facility, encompassing over 10,000 sq. ft., equipped with cutting-edge machinery, diverse training zones, and innovative wellness programs. We've expanded our offerings while staying true to our core roots: pushing limits, fostering an even larger, more supportive community, and celebrating every milestone, big or small, on each member's unique journey towards a healthier, stronger self. Our history is a testament to the idea that with passion and perseverance, physical and personal transformation is truly limitless. 🌟
+        </p>
+    </div>
+    <div class="image-column about-image-column">
+        <img src="{% static 'images/gymhistory.jpg' %}" alt="Titan Fitness Gym History" class="zoomable-image about-media-image">
+    </div>
+</div>
+
+<div class="trainers-section about-section-grid-container" data-observer>
+    <h3 class="about-heading about-leadership-heading">Our Leadership Team</h3>
+    <div class="trainers-grid about-grid-layout">
+        <div class="trainer-card about-grid-card">
+            <img src="{% static 'images/team/Founder.jpg' %}" alt="Founder" class="about-circular-image about-image-orange-border">
+            <h4 class="about-team-name">Mr. Aryan Sharma</h4>
+            <p class="about-team-description">Founder & CEO. Passionate about fitness and community building.</p>
+        </div>
+        <div class="trainer-card about-grid-card">
+            <img src="{% static 'images/team/Headtrainer.jpg' %}" alt="Head Trainer" class="about-circular-image about-image-blue-border">
+            <h4 class="about-team-name">Ms. Priya Patel</h4>
+            <p class="about-team-description">Head Trainer. Expert in strength and conditioning.</p>
+        </div>
+    </div>
+</div>
+
+<div class="scroll-section about-section-split" data-observer>
+    <div class="image-column about-image-column">
+        <img src="{% static 'images/gymfacilities.jpg' %}" alt="Gym Facilities" class="zoomable-image about-media-image">
+    </div>
+    <div class="text-column about-text-column">
+        <h3 class="about-heading about-facilities-heading">World-Class Facilities</h3>
+        <p class="about-paragraph-split">
+            Our 10,000 sq. ft. gym redefines the fitness experience, boasting a meticulously designed layout that caters to every workout style. Step into a world of cutting-edge equipment, featuring dedicated Olympic weightlifting platforms for serious strength enthusiasts, rows of high-tech cardio machines with integrated entertainment systems for engaging endurance training, and a serene, dedicated yoga studio offering a tranquil escape for mindfulness and flexibility. Beyond the core training zones, our facilities extend to spacious, immaculately maintained locker rooms with premium amenities for your comfort. After an intense session, refuel and recover at our vibrant smoothie bar, offering a selection of nutritious and delicious post-workout blends. Every corner of our gym is crafted to provide a seamless and inspiring environment, ensuring you have everything you need not just to train, but to truly recover, rejuvenate, and surpass your fitness goals. 🏋️‍♂️
+        </p>
+    </div>
+</div>
+
+<div class="content about-section-main">
+    <h3 class="about-heading about-community-heading">Our Vibrant Community</h3>
+    <p class="about-paragraph-main">
+        Titan Fitness Gym is more than a gym—it’s a family. Join our monthly fitness challenges, group bootcamps, or annual Titan Marathon to connect with like-minded fitness enthusiasts. Together, we sweat, support, and succeed! 🤝
+    </p>
+    <div class="about-button-wrapper">
+        <a href="{% url 'events' %}" class="free-trial-button about-cta-button">Explore Events 🌟</a>
+    </div>
+</div>
+
+<div class="trainers-section about-section-grid-container" data-observer>
+    <h3 class="about-heading about-success-stories-heading">Member Success Stories</h3>
+    <div class="trainers-grid about-grid-layout">
+        <div class="trainer-card about-grid-card">
+            <img src="{% static 'images/testimonials/MaleTransform.jpg' %}" alt="Member Transformation - Male" class="about-circular-image about-image-orange-border">
+            <p class="about-card-text">"Titan helped me lose 20kg and gain confidence. The trainers are amazing!" – Rohan K.</p>
+        </div>
+        <div class="trainer-card about-grid-card">
+            <img src="{% static 'images/testimonials/FemaleTransform.jpg' %}" alt="Member Transformation - Female" class="about-circular-image about-image-blue-border">
+            <p class="about-card-text">"From beginner to marathon runner, Titan’s community pushed me to excel." – Anjali S.</p>
+        </div>
+    </div>
+</div>
+
+<div class="free-trial-section about-section-main" data-observer>
+    <h3 class="about-heading about-cta-title">Ready to Join the Titan Family?</h3>
+    <p class="about-paragraph-main">
+        Start your journey with a free trial today! 💪
+    </p>
+    <div class="about-button-wrapper">
+        <a href="{% url 'free_trial_register' %}" class="free-trial-button about-cta-button">Get Your Free Trial 🌟</a>
+    </div>
+</div>
+
+<div class="content about-section-main">
+    <h3 class="about-heading about-journey-heading">Our Journey</h3>
+    <div class="timeline about-timeline">
+        <div class="timeline-item about-timeline-item">
+            <div class="about-timeline-dot"></div>
+            <p class="about-timeline-text">2020: Titan Fitness Gym founded with a vision to empower fitness.</p>
+        </div>
+        <div class="timeline-item about-timeline-item">
+            <div class="about-timeline-dot"></div>
+            <p class="about-timeline-text">2022: Expanded to a 10,000 sq. ft. facility.</p>
+        </div>
+        <div class="timeline-item about-timeline-item">
+            <div class="about-timeline-dot"></div>
+            <p class="about-timeline-text">2025: Awarded Best Gym in the City!</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 1. Section Container Styles */
+    .about-section-main {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    .about-section-split {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 30px;
+        border-radius: 10px;
+        margin: 20px auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        max-width: 1200px;
+    }
+
+    .about-section-grid-container {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+        padding: 40px;
+        border-radius: 15px;
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    /* 2. Heading Styles */
+    .about-heading {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+        background: linear-gradient(to right, #00cc00, #66ff66);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 204, 0, 0.7), -2px -2px 4px rgba(102, 255, 102, 0.5), 0 0 8px rgba(0, 204, 0, 0.9);
+    }
+
+    /* Specific headings with gradients */
+    .about-facilities-heading {
+        font-family: 'Gothic A1', sans-serif;
+        font-size: 2.2em;
+        text-align: left;
+        background: linear-gradient(to right, #00ccff, #66ffcc);
+        text-shadow: 2px 2px 4px rgba(0, 204, 255, 0.7), -2px -2px 4px rgba(102, 255, 204, 0.5), 0 0 8px rgba(0, 204, 255, 0.9);
+    }
+
+    .about-leadership-heading, .about-success-stories-heading {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.8em;
+        margin-bottom: 30px;
+        background: linear-gradient(to right, #ff6600, #ffcc00);
+        text-shadow: 2px 2px 4px rgba(255, 102, 0, 0.7), -2px -2px 4px rgba(255, 204, 0, 0.5), 0 0 8px rgba(255, 102, 0, 0.9);
+    }
+
+    .about-mission-heading, .about-vision-heading, .about-community-heading, .about-cta-title, .about-journey-heading, .about-story-heading {
+        font-family: 'Gothic A1', sans-serif;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    /* 3. Paragraph Styles */
+    .about-paragraph-main {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4em;
+        line-height: 1.8;
+        text-align: center;
+        color: #fff;
+    }
+
+    .about-paragraph-split {
+        font-family: 'Cinzel', serif;
+        font-size: 1.3em;
+        line-height: 1.7;
+        color: #fff;
+    }
+
+    .about-card-text, .about-team-description {
+        font-family: 'Cinzel', serif;
+        font-size: 1.1em;
+        color: #fff;
+    }
+
+    /* 4. Column Styles for split sections */
+    .about-text-column {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px;
+    }
+    .about-image-column {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px;
+    }
+
+    /* 5. Image Styles */
+    .about-media-image {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .zoomable-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .about-circular-image {
+        width: 100%;
+        max-width: 200px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+    .about-image-orange-border {
+        border: 3px solid #ff6600;
+    }
+    .about-image-blue-border {
+        border: 3px solid #00ccff;
+    }
+
+    /* 6. Grid Layout (for Leadership Team & Success Stories) */
+    .about-grid-layout {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .about-grid-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about-grid-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .about-team-name {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.8em;
+        color: #fff;
+        margin: 10px 0;
+    }
+
+    /* 7. Button Styles */
+    .about-button-wrapper {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .about-cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background: linear-gradient(to right, #ff6600, #00ccff);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.2em;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about-cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 8. Timeline Styles */
+    .about-timeline {
+        position: relative;
+        padding: 20px 0;
+    }
+    .about-timeline-item {
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 30px;
+        border-left: 4px solid #00ccff;
+        transition: background 0.3s ease;
+    }
+    .about-timeline-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    .about-timeline-dot {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 5px;
+        width: 16px;
+        height: 16px;
+        background: #ff6600;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-shadow: 0 0 10px rgba(255, 102, 0, 0.7);
+        transition: transform 0.3s ease;
+    }
+    .about-timeline-item:hover .about-timeline-dot {
+        transform: scale(1.2);
+    }
+    .about-timeline-text {
+        font-family: 'Cinzel', serif;
+        font-size: 1.3em;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /* 9. Responsive Adjustments */
+    @media (max-width: 768px) {
+        .content.about-section-main,
+        .scroll-section.about-section-split,
+        .trainers-section.about-section-grid-container,
+        .free-trial-section {
+            padding: 20px;
+            margin: 10px auto;
+        }
+        .about-section-split {
+            flex-direction: column;
+        }
+        .about-text-column, .about-image-column {
+            min-width: 100%;
+            padding: 10px;
+        }
+        .about-heading {
+            font-size: 1.8em !important;
+        }
+        .about-leadership-heading, .about-success-stories-heading {
+            font-size: 2.2em !important;
+        }
+        .about-paragraph-main, .about-paragraph-split, .about-card-text, .about-team-description, .about-timeline-text {
+            font-size: 1.1em !important;
+        }
+        .about-grid-layout {
+            grid-template-columns: 1fr;
+        }
+        .about-timeline-item {
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+        .about-timeline-dot {
+            width: 12px;
+            height: 12px;
+            left: -6px;
+        }
+    }
+</style>
+{% endblock %}

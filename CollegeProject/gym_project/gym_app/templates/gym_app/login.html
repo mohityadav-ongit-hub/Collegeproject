@@ -1,0 +1,187 @@
+{% extends 'gym_app/base.html' %}
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+        <h2 class="login-title">Login to Titan Fitness 💪</h2>
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Username" required>
+                <i class="fas fa-user input-icon"></i>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Password" required>
+                <i class="fas fa-lock input-icon"></i>
+            </div>
+            <button type="submit" class="login-button">Login 🔑</button>
+        </form>
+        <p class="back-link">
+            <a href="{% url 'home' %}">Back to Home 🏠</a>
+        </p>
+        {% if messages %}
+            <div class="error-messages">
+                {% for message in messages %}
+                    <p class="error-text">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 60px); /* Full height minus nav */
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.6); /* Match base.html overlay */
+    }
+
+    .login-card {
+        background: rgba(0, 0, 0, 0.8); /* Dark, semi-transparent card */
+        border-radius: 15px;
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Match base.html shadow */
+        text-align: center;
+        animation: slideUp 1s ease-out; /* Fade-in animation */
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    .login-title {
+        font-family: 'Garamond', 'Bookman Old Style', serif;
+        font-size: 2.5em;
+        color: #00ccff; /* Blue accent from base.html */
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 204, 255, 0.7);
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .login-form input {
+        width: 100%;
+        padding: 12px 40px 12px 15px; /* Space for icon */
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background: linear-gradient(45deg, rgba(255, 102, 0, 0.2), rgba(0, 204, 255, 0.2)); /* Gradient input */
+        color: #fff;
+        font-size: 1.1em;
+        font-family: 'Bookman Old Style', serif;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-form input:focus {
+        border-color: #ffcc00; /* Yellow focus from base.html */
+        box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+        outline: none;
+    }
+
+    .input-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #00ccff; /* Blue icon */
+        font-size: 1.2em;
+    }
+
+    .login-button {
+        background: #ff6600; /* Orange from base.html */
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        font-family: 'Gothic A1', 'Arial Black', sans-serif; /* Match button font */
+    }
+
+    .login-button:hover {
+        background: #ff8800; /* Hover orange from base.html */
+        transform: translateY(-2px);
+    }
+
+    .back-link {
+        margin-top: 15px;
+        font-size: 1em;
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    .back-link a {
+        color: #00ccff; /* Blue link */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+        color: #ffcc00; /* Yellow hover */
+        text-decoration: underline;
+    }
+
+    .error-messages {
+        margin-top: 15px;
+        background: rgba(255, 51, 51, 0.8); /* Red for errors */
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .error-text {
+        color: #fff;
+        font-size: 0.9em;
+        margin: 5px 0;
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    @media (max-width: 768px) {
+        .login-card {
+            padding: 20px;
+            max-width: 90%;
+        }
+
+        .login-title {
+            font-size: 2em;
+        }
+
+        .login-form input {
+            padding: 10px 35px 10px 12px;
+            font-size: 1em;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+
+        .input-icon {
+            font-size: 1em;
+        }
+
+        .back-link {
+            font-size: 0.9em;
+        }
+
+        .error-text {
+            font-size: 0.8em;
+        }
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+</style>
+{% endblock %}

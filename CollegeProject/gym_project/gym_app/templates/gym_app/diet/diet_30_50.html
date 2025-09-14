@@ -1,0 +1,81 @@
+{% extends 'gym_app/base.html' %}
+{% block content %}
+<div class="content" style="animation: fadeIn 1s ease-in;">
+ <h2 style="font-family: 'Gothic A1', sans-serif; font-size: 2.5em; color: #fff; text-align: center; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); margin-bottom: 30px;">7-Day Diet Plan (Age 30–50) 🍇</h2>
+ <h3 style="font-family: 'Gothic A1', sans-serif; font-size: 1.8em; color: #00ccff; text-align: center; margin-bottom: 20px;">Focus: Lean Muscle Maintenance, Heart Health, Energy & Recovery</h3>
+ 
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🏋️‍♂️ Morning (Pre-workout - 6:00–7:00 AM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ 5 soaked almonds & 2 walnuts<br>
+ 1 banana<br>
+ Green tea or warm lemon water<br>
+ Optional: Black coffee
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">💪 Post-Workout (8:00–8:30 AM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ 1 scoop whey protein (if digestive system allows)<br>
+ 2 boiled eggs or sprouts bowl<br>
+ Coconut water
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍽️ Breakfast (9:00–10:00 AM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Vegetable oats or multigrain toast<br>
+ 1 boiled egg or paneer/tofu<br>
+ 1 fruit (apple/orange)
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍛 Lunch (1:00–2:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ 1-2 multigrain roti or brown rice<br>
+ Dal or grilled chicken<br>
+ Mix salad (beetroot, carrot, cucumber)<br>
+ Buttermilk
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">☕ Evening Snack (5:00–6:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Roasted makhana or sprouts<br>
+ Herbal tea
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h 4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍲 Dinner (8:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Light meal: grilled paneer/tofu/fish<br>
+ Steamed or sautéed vegetables<br>
+ 1 phulka or small portion of quinoa
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🌙 Before Bed (9:30–10:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Chamomile tea or warm turmeric milk<br>
+ Optional: 1 tsp flaxseeds or chia seeds for digestion & heart health
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">📝 Notes</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ If you're aiming for weight loss, reduce carbs at dinner. If aiming for muscle gain, increase protein and healthy fats.
+ </p>
+ </div>
+
+ <div style="display: flex; justify-content: center; margin-top: 30px;">
+ <a href="{% url 'diet_selection' %}" class="join-us-button">Back to Diet Selection 🔙</a>
+ </div>
+</div>
+{% endblock %}

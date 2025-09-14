@@ -1,0 +1,72 @@
+{% extends 'gym_app/base.html' %}
+{% block content %}
+<div class="content" style="animation: fadeIn 1s ease-in;">
+    <h2 style="font-family: 'Gothic A1', sans-serif; font-size: 2.5em; color: #fff; text-align: center; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); margin-bottom: 30px;">7-Day Diet Plan (Age 50–70) 🧓</h2>
+    <h3 style="font-family: 'Gothic A1', sans-serif; font-size: 1.8em; color: #00ccff; text-align: center; margin-bottom: 20px;">Focus: Strength, Immunity & Digestion</h3>
+
+    <div class="diet-section" style="margin-bottom: 20px;">
+        <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🌅 Morning (6:30–7:30 AM)</h4>
+        <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+            1 glass warm water with lemon or 1 tsp soaked methi (fenugreek) seeds<br>
+            5 soaked almonds + 2 walnuts<br>
+            Light walk or yoga session (optional)
+        </p>
+    </div>
+
+    <div class="diet-section" style="margin-bottom: 20px;">
+        <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍽️ Breakfast (8:00–9:00 AM)</h4>
+        <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+            Oats/porridge with seeds (chia/flax) and 1 banana<br>
+            OR 2 multigrain toast with paneer/tofu or boiled egg<br>
+            1 cup herbal tea or milk (low fat, if needed)
+        </p>
+    </div>
+
+    <div class="diet-section" style="margin-bottom: 20px;">
+        <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🥗 Mid-Morning Snack (11:00 AM)</h4>
+        <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+            Seasonal fruit (apple, papaya, orange, or guava)<br>
+            OR coconut water
+        </p>
+    </div>
+
+    <div class="diet-section" style="margin-bottom: 20px;">
+        <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍛 Lunch (1:00–2:00 PM)</h4>
+        <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+            1–2 multigrain rotis or 1 bowl brown rice<br>
+            1 bowl dal or lightly spiced sabzi<br>
+            Curd or buttermilk<br>
+            Salad (cucumber, beetroot, carrot)
+        </p>
+    </div>
+
+    <div class="diet-section" style="margin-bottom: 20px;">
+        <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">☕ Evening Snack (4:30–5:30 PM)</h4>
+        <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+            Roasted makhana or sprouts chaat<br>
+            Green tea or herbal infusion
+        </p>
+    </div>
+
+    <div class="diet-section" style="margin-bottom: 20px;">
+        <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍲 Dinner (7:30–8:30 PM)</h4>
+        <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+            Light sabzi (lauki, tinda, spinach, etc.)<br>
+            1 phulka or small bowl of khichdi/dalia<br>
+            Soup (tomato, moong, or mixed veg)
+        </p>
+    </div>
+
+    <div class="diet-section" style="margin-bottom: 20px;">
+        <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🌙 Before Bed (9:30 PM)</h4>
+        <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+            1 cup warm turmeric milk<br>
+            Optional: 1 date or 1 tsp ghee if digestion is weak
+        </p>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <a href="{% url 'diet_selection' %}" class="join-us-button">Back to Diet Selection 🔙</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'gym_app/base.html' %}
+{% block content %}
+<div class="content" style="animation: fadeIn 1s ease-in;">
+ <h2 style="font-family: 'Gothic A1', sans-serif; font-size: 2.5em; color: #fff; text-align: center; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); margin-bottom: 30px;">7-Day Diet Plan (Age 15–30) 🌿</h2>
+ <h3 style="font-family: 'Gothic A1', sans-serif; font-size: 1.8em; color: #00ccff; text-align: center; margin-bottom: 20px;">Focus: Muscle Gain, Endurance & Quick Recovery</h3>
+ 
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🏋️‍♂️ Morning (Pre-workout - 6:00–7:30 AM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ 1 banana or 1 apple<br>
+ 5–7 soaked almonds<br>
+ Black coffee or green tea (optional)<br>
+ 1 scoop whey protein (if available)<br>
+ 1 boiled egg or brown bread with peanut butter
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">💪 Post-Workout (8:30–9:00 AM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ 1 scoop whey protein in water or milk<br>
+ 2 boiled eggs or paneer/tofu<br>
+ 1 glass of lemon water with pink salt
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍽️ Breakfast (9:00–10:00 AM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Oats or poha with vegetables<br>
+ 2 eggs or paneer bhurji<br>
+ 1 glass milk or smoothie (banana or mango)
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍛 Lunch (1:00–2:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Brown rice/roti<br>
+ Grilled chicken or lentils (dal)<br>
+ Salad (cucumber, carrot, beetroot)<br>
+ Curd/yogurt
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🥜 Evening Snack (5:00–6:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Handful of mixed nuts or roasted chickpeas<br>
+ Fruit (apple/orange/berries)<br>
+ Green tea or black coffee
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🍲 Dinner (8:00–9:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ Roti or sweet potato<br>
+ Grilled fish/chicken or tofu/paneer<br>
+ Steamed vegetables or soup
+ </p>
+ </div>
+
+ <div class="diet-section" style="margin-bottom: 20px;">
+ <h4 style="font-family: 'Gothic A1', sans-serif; font-size: 1.5em; color: #ff6600;">🌙 Before Bed (10:00 PM)</h4>
+ <p style="font-family: 'Cinzel', serif; font-size: 1em; line-height: 1.6;">
+ 1 glass warm milk with turmeric<br>
+ Optional: 1 tbsp peanut butter or casein protein
+ </p>
+ </div>
+
+ <div style="display: flex; justify-content: center; margin-top: 30px;">
+ <a href="{% url 'diet_selection' %}" class="join-us-button">Back to Diet Selection 🔙</a>
+ </div>
+</div>
+{% endblock %}

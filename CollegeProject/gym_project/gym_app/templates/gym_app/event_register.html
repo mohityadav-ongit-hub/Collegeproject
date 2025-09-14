@@ -1,0 +1,11 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content events-section-main">
+    <h3 class="events-heading">Register for {{ event|title }}</h3>
+    <p class="events-paragraph-main">
+        Thank you for your interest in {{ event|title }}! Registration details coming soon. Contact us for more info! 💪
+    </p>
+    <a href="{% url 'free_trial_register' %}" class="events-cta-button">Get a Free Trial 🌟</a>
+</div>
+{% endblock %}

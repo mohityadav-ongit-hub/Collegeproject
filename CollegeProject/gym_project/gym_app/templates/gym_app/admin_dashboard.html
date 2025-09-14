@@ -1,0 +1,213 @@
+{% extends 'gym_app/base.html' %}
+{% block content %}
+<div class="content" style="text-align: center; max-width: 1400px; margin: 20px auto; animation: fadeIn 1s ease-in;">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% if members %}
+        <h2 style="font-size: 2.5em; color: #fff; margin-bottom: 30px;">Admin Dashboard: All Members 🔐</h2>
+        <div class="table-container">
+            <table class="members-table">
+                <thead>
+                    <tr>
+                        <th data-sort="username">Username <i class="fas fa-sort"></i></th>
+                        <th data-sort="phone">Phone <i class="fas fa-sort"></i></th>
+                        <th data-sort="dob">Date of Birth <i class="fas fa-sort"></i></th>
+                        <th data-sort="address">Address <i class="fas fa-sort"></i></th>
+                        <th data-sort="plan">Membership Plan <i class="fas fa-sort"></i></th>
+                        <th data-sort="join_date">Join Date <i class="fas fa-sort"></i></th>
+                        <th data-sort="expiry">Membership Expiry <i class="fas fa-sort"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in members %}
+                    <tr class="member-row" data-id="{{ member.id }}" {% if member.is_expiring %}style="background: rgba(255, 0, 0, 0.2);"{% endif %}>
+                        <td>{{ member.user.username }}</td>
+                        <td>{{ member.phone|default:"Not provided" }}</td>
+                        <td>{{ member.date_of_birth|default:"Not provided" }}</td>
+                        <td>{{ member.address|default:"Not provided" }}</td>
+                        <td>{{ member.membership_plan.name|default:"None" }}</td>
+                        <td>{{ member.join_date|date:"Y-m-d"|default:"Not set" }}</td>
+                        <td>{{ member.membership_expiry|date:"Y-m-d"|default:"Not set" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 30px;">
+            <a href="{% url 'home' %}" class="join-us-button">Back to Home 🏠</a>
+        </div>
+    {% else %}
+        <h2 style="font-size: 2.5em; color: #fff; margin-bottom: 30px;">Admin Login 🔐</h2>
+        <form method="post" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="diet-submit-button">Submit Password 🔑</button>
+        </form>
+    {% endif %}
+</div>
+
+<style>
+    .table-container {
+        overflow-x: auto;
+        margin: 20px 0;
+        animation: fadeIn 1s ease-out;
+    }
+
+    .members-table {
+        width: 100%;
+        min-width: 1200px;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+    }
+
+    .members-table th {
+        background: rgba(0, 0, 64, 0.9);
+        color: #fff;
+        padding: 20px 30px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 1.3em;
+        transition: background 0.3s ease;
+    }
+
+    .members-table th:hover {
+        background: #ff6600;
+    }
+
+    .members-table td {
+        padding: 18px 30px;
+        border-bottom: 2px solid #00ccff;
+        color: #000;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+    }
+
+    .members-table tr {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    .members-table tr:hover {
+        background: rgba(255, 102, 0, 0.2);
+        transform: scale(1.02);
+    }
+
+    .member-row {
+        cursor: pointer;
+    }
+
+    .member-row:active {
+        background: rgba(0, 204, 255, 0.3);
+    }
+
+    .diet-submit-button {
+        background: #00ced1;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.2em;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .diet-submit-button:hover {
+        background: #00b7eb;
+        transform: translateY(-2px);
+    }
+
+    .join-us-button {
+        background: #00ced1;
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .join-us-button:hover {
+        background: #00b7eb;
+        transform: translateY(-2px);
+    }
+
+    .alert {
+        background: #fff;
+        color: #ff3333;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+    .alert.success {
+        color: #32cd32;
+    }
+
+    @media (max-width: 768px) {
+        .members-table {
+            min-width: 100%;
+        }
+
+        .members-table th, .members-table td {
+            padding: 12px 15px;
+            font-size: 1em;
+        }
+
+        .diet-submit-button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
+        .join-us-button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const table = document.querySelector('.members-table');
+        const headers = table.querySelectorAll('th[data-sort]');
+        let sortDirection = 1;
+        let sortedColumn = null;
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const key = header.dataset.sort;
+                if (sortedColumn !== key) {
+                    sortDirection = 1;
+                } else {
+                    sortDirection *= -1;
+                }
+                sortedColumn = key;
+
+                const tbody = table.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+
+                rows.sort((a, b) => {
+                    const aValue = a.cells[Array.from(headers).indexOf(header)].textContent;
+                    const bValue = b.cells[Array.from(headers).indexOf(header)].textContent;
+                    return aValue.localeCompare(bValue, undefined, { numeric: true, sensitivity: 'base' }) * sortDirection;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        const rows = table.querySelectorAll('.member-row');
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                const userId = row.dataset.id;
+                window.location.href = `{% url 'member_detail' 0 %}`.replace('0', userId);
+            });
+        });
+    });
+</script>
+{% endblock %}

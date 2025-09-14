@@ -1,0 +1,278 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-card">
+        <h2 class="register-title">Join Titan Fitness 🌟</h2>
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            <div class="input-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                <i class="fas fa-user input-icon"></i>
+                {% if form.username.errors %}
+                    <p class="error-text">{{ form.username.errors.as_text }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                <i class="fas fa-envelope input-icon"></i>
+                {% if form.email.errors %}
+                    <p class="error-text">{{ form.email.errors.as_text }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                <i class="fas fa-lock input-icon"></i>
+                {% if form.password1.help_text %}
+                    <p class="help-text">{{ form.password1.help_text }}</p>
+                {% endif %}
+                {% if form.password1.errors %}
+                    <p class="error-text">{{ form.password1.errors.as_text }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                <i class="fas fa-lock input-icon"></i>
+                {% if form.password2.help_text %}
+                    <p class="help-text">{{ form.password2.help_text }}</p>
+                {% endif %}
+                {% if form.password2.errors %}
+                    <p class="error-text">{{ form.password2.errors.as_text }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+                <i class="fas fa-phone input-icon"></i>
+                {% if form.phone.errors %}
+                    <p class="error-text">{{ form.phone.errors.as_text }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                {{ form.date_of_birth.label_tag }}
+                {{ form.date_of_birth }}
+                <i class="fas fa-calendar-alt input-icon"></i>
+                {% if form.date_of_birth.errors %}
+                    <p class="error-text">{{ form.date_of_birth.errors.as_text }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                {{ form.address.label_tag }}
+                {{ form.address }}
+                <i class="fas fa-home input-icon"></i>
+                {% if form.address.errors %}
+                    <p class="error-text">{{ form.address.errors.as_text }}</p>
+                {% endif %}
+            </div>
+            <button type="submit" class="register-button">Register 🚀</button>
+        </form>
+        <p class="back-link">
+            <a href="{% url 'home' %}">Back to Home 🏠</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    .register-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 60px); /* Full height minus nav */
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.6); /* Match base.html overlay */
+    }
+
+    .register-card {
+        background: rgba(0, 0, 0, 0.8); /* Dark, semi-transparent card */
+        border-radius: 15px;
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Match base.html shadow */
+        text-align: center;
+        animation: slideUp 1s ease-out; /* Fade-in animation */
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    .register-title {
+        font-family: 'Garamond', 'Bookman Old Style', serif;
+        font-size: 2.5em;
+        color: #00ccff; /* Blue accent from base.html */
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 204, 255, 0.7);
+    }
+
+    .register-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input-group {
+        position: relative;
+        width: 100%;
+        text-align: left;
+    }
+
+    .register-form label {
+        font-size: 1em;
+        color: #fff;
+        margin-bottom: 5px;
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    .register-form input,
+    .register-form textarea {
+        width: 100%;
+        padding: 12px 40px 12px 15px; /* Space for icon */
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background: linear-gradient(45deg, rgba(255, 102, 0, 0.2), rgba(0, 204, 255, 0.2)); /* Gradient input */
+        color: #fff;
+        font-size: 1.1em;
+        font-family: 'Bookman Old Style', serif;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .register-form textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .register-form input:focus,
+    .register-form textarea:focus {
+        border-color: #ffcc00; /* Yellow focus from base.html */
+        box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+        outline: none;
+    }
+
+    .input-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #00ccff; /* Blue icon */
+        font-size: 1.2em;
+    }
+
+    /* Adjust icon position for textarea */
+    .input-group textarea ~ .input-icon {
+        top: 20px; /* Align with top of textarea */
+    }
+
+    .help-text {
+        font-size: 0.8em;
+        color: #ccc;
+        margin-top: 5px;
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    .register-button {
+        background: #ff6600; /* Orange from base.html */
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        font-family: 'Gothic A1', 'Arial Black', sans-serif; /* Match button font */
+    }
+
+    .register-button:hover {
+        background: #ff8800; /* Hover orange from base.html */
+        transform: translateY(-2px);
+    }
+
+    .back-link {
+        margin-top: 15px;
+        font-size: 1em;
+        font-family: 'Bookman Old Style', serif;
+    }
+
+    .back-link a {
+        color: #00ccff; /* Blue link */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+        color: #ffcc00; /* Yellow hover */
+        text-decoration: underline;
+    }
+
+    .error-messages {
+        display: none; /* Hide local error messages; use base.html alert overlay */
+    }
+
+    .error-text {
+        color: #fff;
+        font-size: 0.9em;
+        margin: 5px 0;
+        font-family: 'Bookman Old Style', serif;
+        background: rgba(255, 51, 51, 0.8); /* Red for errors */
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .register-card {
+            padding: 20px;
+            max-width: 90%;
+        }
+
+        .register-title {
+            font-size: 2em;
+        }
+
+        .register-form input,
+        .register-form textarea {
+            padding: 10px 35px 10px 12px;
+            font-size: 1em;
+        }
+
+        .register-button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+
+        .input-icon {
+            font-size: 1em;
+        }
+
+        .help-text {
+            font-size: 0.75em;
+        }
+
+        .error-text {
+            font-size: 0.8em;
+        }
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('.register-form');
+        form.addEventListener('submit', (e) => {
+            const password = form.querySelector('input[name="password1"]').value;
+            const confirmPassword = form.querySelector('input[name="password2"]').value;
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+            }
+        });
+    });
+</script>
+{% endblock %}

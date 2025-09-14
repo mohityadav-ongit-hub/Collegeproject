@@ -1,0 +1,212 @@
+{% extends 'gym_app/base.html' %}
+{% block content %}
+<div class="content" style="animation: fadeIn 1s ease-in;">
+    <h2 class="plans-title">Membership Plans <span class="emote">🎯</span></h2>
+    {% if has_access %}
+        <form method="post" class="plan-form">
+            {% csrf_token %}
+            <input type="hidden" name="plan_submit" value="true">
+            {{ plan_form.as_p }}
+            <button type="submit" class="add-plan-button">Add Plan ➕</button>
+        </form>
+    {% else %}
+        <form method="post" class="password-form">
+            {% csrf_token %}
+            <input type="hidden" name="password_submit" value="true">
+            {{ password_form.as_p }}
+            <button type="submit" class="password-submit-button">Unlock Plan Management 🔓</button>
+        </form>
+    {% endif %}
+    <h3 class="existing-plans-title">Existing Plans</h3>
+    <div class="plans-container">
+        {% for plan in plans %}
+        <div class="plan-card">
+            <h4 class="plan-name">{{ plan.name }}</h4>
+            <p class="plan-details">Price: ${{ plan.price }}</p>
+            <p class="plan-details">Duration: {{ plan.duration_months }} months</p>
+            <p class="plan-description">{{ plan.description|default:"No description available" }}</p>
+        </div>
+        {% empty %}
+        <p class="no-plans">No membership plans available. Add one above! 🏋️</p>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .emote {
+        font-size: 2.5em;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .plans-title {
+        font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
+        font-size: 2.5em;
+        text-align: center;
+        color: #fff; /* Plain white text */
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    .plan-form, .password-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: 20px auto;
+        max-width: 500px;
+    }
+
+    .plan-form p, .password-form p {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .plan-form input,
+    .plan-form textarea,
+    .password-form input {
+        padding: 12px;
+        width: 100%;
+        max-width: 400px;
+        border: 2px solid #00ccff;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        color: #fff;
+        font-family: 'Bookman Old Style', serif;
+        font-size: 1.1em;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .plan-form input:focus,
+    .plan-form textarea:focus,
+    .password-form input:focus {
+        border-color: #ffcc00;
+        outline: none;
+        transform: scale(1.02);
+    }
+
+    .add-plan-button, .password-submit-button {
+        background: #00ced1;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .add-plan-button:hover, .password-submit-button:hover {
+        background: #00b7eb;
+        transform: translateY(-2px);
+    }
+
+    .existing-plans-title {
+        font-family: 'Gothic A1', sans-serif;
+        font-size: 2em;
+        color: #fff;
+        text-align: center;
+        margin: 30px 0 20px;
+        text-transform: uppercase;
+    }
+
+    .plans-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .plan-card {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid #00ccff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 204, 255, 0.5);
+    }
+
+    .plan-name {
+        font-family: 'Gothic A1', sans-serif;
+        font-size: 1.5em;
+        color: #00ccff;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .plan-details {
+        font-family: 'Bookman Old Style', serif;
+        font-size: 1.1em;
+        color: #fff;
+        margin: 5px 0;
+    }
+
+    .plan-description {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9em;
+        color: #ddd;
+        margin-top: 10px;
+        line-height: 1.6;
+    }
+
+    .no-plans {
+        font-family: 'Cinzel', serif;
+        font-size: 1.2em;
+        color: #fff;
+        text-align: center;
+        margin: 20px 0;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+        .plans-title {
+            font-size: 2em;
+        }
+
+        .existing-plans-title {
+            font-size: 1.5em;
+        }
+
+        .plan-form input,
+        .plan-form textarea,
+        .password-form input {
+            max-width: 100%;
+            font-size: 1em;
+        }
+
+        .add-plan-button, .password-submit-button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
+        .plans-container {
+            grid-template-columns: 1fr;
+            padding: 10px;
+        }
+
+        .plan-card {
+            padding: 15px;
+        }
+
+        .plan-name {
+            font-size: 1.3em;
+        }
+
+        .plan-details {
+            font-size: 1em;
+        }
+
+        .plan-description {
+            font-size: 0.85em;
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,195 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content" style="text-align: center; max-width: 900px; margin: 20px auto;">
+    {% if member %}
+        <h2>{{ member.user.username }}'s Profile</h2>
+        <div class="profile-details">
+            <p><strong>Phone:</strong> {{ member.phone|default:"Not provided" }}</p>
+            <p><strong>Date of Birth:</strong> {{ member.date_of_birth|default:"Not provided" }}</p>
+            <p><strong>Address:</strong> {{ member.address|default:"Not provided" }}</p>
+            <p><strong>Membership Plan:</strong> {{ member.membership_plan.name|default:"None" }}</p>
+            <p><strong>Expiry:</strong> {{ member.membership_expiry|date:"Y-m-d"|default:"Not set" }}</p>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% if is_admin %}
+            <div class="options-container">
+                <div class="option-card">
+                    <h3>Update Membership Plan</h3>
+                    <form method="post" class="form-card">
+                        {% csrf_token %}
+                        {{ plan_form.as_p }}
+                        {% if plan_form.errors %}
+                            <div class="alert">{{ plan_form.errors }}</div>
+                        {% endif %}
+                        <button type="submit" name="plan_submit" class="action-btn update-btn">Update Plan</button>
+                    </form>
+                </div>
+
+                <div class="option-card">
+                    <h3>Record Payment</h3>
+                    <form method="post" class="form-card">
+                        {% csrf_token %}
+                        {{ payment_form.as_p }}
+                        {% if payment_form.errors %}
+                            <div class="alert">{{ payment_form.errors }}</div>
+                        {% endif %}
+                        <button type="submit" name="payment_submit" class="action-btn payment-btn">Add Payment</button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="history-section">
+            <h3>Payment History</h3>
+            <ul class="payment-list">
+                {% for payment in payments %}
+                    <li>{{ payment.payment_date|date:"Y-m-d" }} - ${{ payment.amount }} ({{ payment.status }})</li>
+                {% empty %}
+                    {% if member.membership_plan.name == 'Special plan' %}
+                        <li>Fully paid</li>
+                    {% else %}
+                        <li>No payments recorded.</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <h2>Access Denied</h2>
+        <p>You are not permitted to view this member's details.</p>
+    {% endif %}
+</div>
+
+<style>
+    .profile-details {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        font-size: 1.2em;
+        color: #fff;
+    }
+
+    .profile-details p {
+        margin: 10px 0;
+    }
+
+    .options-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .option-card {
+        flex: 1;
+        background: rgba(0, 0, 64, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .option-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 204, 255, 0.5);
+    }
+
+    .form-card {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    .form-card p {
+        margin: 10px 0;
+        color: #fff;
+    }
+
+    .form-card input, .form-card select {
+        padding: 10px;
+        border: 2px solid #00ccff;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        width: 100%;
+        max-width: 300px;
+        transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .form-card input:focus, .form-card select:focus {
+        border-color: #ffcc00;
+        background: rgba(255, 255, 255, 0.3);
+        outline: none;
+    }
+
+    .action-btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-size: 1.1em;
+        color: #fff;
+        margin-top: 10px;
+    }
+
+    .update-btn {
+        background: #32cd32;
+    }
+
+    .update-btn:hover {
+        background: #3cb371;
+        transform: translateY(-3px);
+    }
+
+    .payment-btn {
+        background: #ff6600;
+    }
+
+    .payment-btn:hover {
+        background: #ff8800;
+        transform: translateY(-3px);
+    }
+
+    .history-section {
+        margin-top: 20px;
+    }
+
+    .payment-list {
+        list-style-type: none;
+        padding: 0;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .payment-list li {
+        font-size: 1.1em;
+        padding: 8px 0;
+        color: #fff;
+        border-bottom: 1px solid #00ccff;
+    }
+
+    .alert {
+        background: #fff;
+        color: #ff3333;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+{% endblock %}

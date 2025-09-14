@@ -1,0 +1,40 @@
+{% extends 'gym_app/base.html' %}
+{% block content %}
+<div class="content" style="animation: fadeIn 1s ease-in;">
+    <h2 style="font-family: 'Gothic A1', sans-serif; font-size: 2.5em; color: #fff; text-align: center; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); margin-bottom: 30px;">Find Your Diet Plan 🍽️</h2>
+    <form method="post" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="diet-submit-button">Get Your Diet Plan 🌟</button>
+    </form>
+</div>
+<style>
+    .diet-submit-button {
+        background: #00ced1; /* Teal color for distinction */
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-family: 'Orbitron', sans-serif;
+        box-shadow: 0 0 10px rgba(0, 206, 209, 0.5); /* Subtle glow */
+    }
+
+    .diet-submit-button:hover {
+        background: #20b2aa; /* Darker teal on hover */
+        box-shadow: 0 0 20px rgba(0, 206, 209, 0.8); /* Stronger glow */
+        transform: translateY(-2px); /* Lift effect */
+    }
+
+    @media (max-width: 768px) {
+        .diet-submit-button {
+            padding: 12px 25px;
+            font-size: 1em;
+        }
+    }
+</style>
+{% endblock %}
